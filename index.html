@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultimate Budget Planner 2026 | Club Valhalla</title>
+<meta name="description" content="Printable 2026 budget planner. 12 monthly budgets, expense, debt and savings trackers. $9.99 instant download.">
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --fg: #1c1b19;
+    --muted: #5f5c55;
+    --card: #ffffff;
+    --accent: #1f5c4a;
+    --accent-fg: #ffffff;
+    --border: #e2dfd7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151514;
+      --fg: #f1efe9;
+      --muted: #a8a49b;
+      --card: #1f1e1c;
+      --accent: #5fbf9f;
+      --accent-fg: #0e1a16;
+      --border: #33312d;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 680px; margin: 0 auto; padding: 56px 16px 72px; }
+  h1 { font-size: 2.2rem; line-height: 1.15; margin: 0 0 12px; }
+  .sub { color: var(--muted); font-size: 1.15rem; margin: 0 0 32px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  ul { padding-left: 20px; margin: 0; }
+  li { margin: 6px 0; }
+  .price { font-size: 2rem; font-weight: 700; margin: 0 0 4px; }
+  .note { color: var(--muted); font-size: .95rem; margin: 0 0 20px; }
+  .buy {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: var(--accent-fg);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 14px 20px;
+    border-radius: 8px;
+  }
+  .buy[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+  footer { color: var(--muted); font-size: .9rem; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="headline"></h1>
+  <p class="sub" id="subhead"></p>
+
+  <section class="card">
+    <h2>What you get</h2>
+    <ul id="benefits"></ul>
+  </section>
+
+  <section class="card">
+    <p class="price" id="price"></p>
+    <p class="note" id="priceNote"></p>
+    <a class="buy" id="buy" href="#">Buy now</a>
+  </section>
+
+  <footer>Secure checkout by Stripe.</footer>
+</main>
+
+<script>
+  // Edit this block. Paste your Stripe Payment Link into paymentLink.
+  const OFFER = {
+    headline: "Ultimate Budget Planner 2026",
+    subhead: "Your complete financial planning system. Print it, fill it in, and know where every dollar goes in 2026.",
+    benefits: [
+      "12 monthly budgets, January to December",
+      "4-week expense tracker",
+      "Debt payoff tracker",
+      "6 savings goal trackers",
+      "52-week savings challenge",
+      "Year in review",
+      "24-page printable PDF, instant download"
+    ],
+    price: "$9.99",
+    priceNote: "One-time payment. Download right after checkout.",
+    paymentLink: "" // e.g. https://buy.stripe.com/xxxxxxxx
+  };
+
+  document.getElementById("headline").textContent = OFFER.headline;
+  document.getElementById("subhead").textContent = OFFER.subhead;
+  document.getElementById("price").textContent = OFFER.price;
+  document.getElementById("priceNote").textContent = OFFER.priceNote;
+  const list = document.getElementById("benefits");
+  OFFER.benefits.forEach(b => {
+    const li = document.createElement("li");
+    li.textContent = b;
+    list.appendChild(li);
+  });
+  const buy = document.getElementById("buy");
+  if (OFFER.paymentLink) {
+    buy.href = OFFER.paymentLink;
+  } else {
+    buy.setAttribute("aria-disabled", "true");
+    buy.textContent = "Checkout link coming soon";
+  }
+</script>
+</body>
+</html>
